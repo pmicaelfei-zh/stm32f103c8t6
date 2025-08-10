@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "dmaRingBuffer.h"
 #include "rePrintf.h"
+#include "shell_port.h"
 
 /* USER CODE END Includes */
 
@@ -50,6 +51,10 @@
 extern UART_RX_TypeDef uart_rx_data_t[];
 extern uint16_t uart_buff_ctrl ;
 extern UART_HandleTypeDef huart1;
+
+static char data     = 0;
+static int  rcv_cnts = 0;
+
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
 osThreadId main_taskHandle;
@@ -179,7 +184,7 @@ void StartTask02(void const * argument)
 void uart_rx_entry(void const * argument)
 {
   /* USER CODE BEGIN uart_rx_entry */
-   uart_printf("pmicaelfei shell begin here\r\n");
+   userShellInit();
 	
    /*配置串口帧识别接收中断*/
    __HAL_UART_ENABLE_IT(&huart1 ,UART_IT_IDLE);
@@ -191,14 +196,28 @@ void uart_rx_entry(void const * argument)
   {
     if(xQueueReceive(rxQueueHandle,&RecvUartData,portMAX_DELAY )== pdTRUE)
     {
-		  //队列中存入了数据
+		  #if 0
+        //函数调试内容
+        //队列中存入了数据
 		  //将数据做了一个串口回显，当然你用作其它处理也可以
-		  HAL_UART_Transmit(&huart1,RecvUartData->buffer,RecvUartData->size,1000);	
-          //此处需要对收到的字符串进行命令解析
-
+		  //HAL_UART_Transmit(&huart1,RecvUartData->buffer,RecvUartData->size,1000);	
+        #endif
        
+        //此处需要对收到的字符串进行命令解析
+        //此处需要按字节顺序对接收到的字符进行解析
+       
+       if( RecvUartData->size > 0 )
+       { //有数据到达
+          //接收计数器在使用前，清空为0
+          rcv_cnts = 0;
+          while( rcv_cnts < RecvUartData->size )
+          {
+             shellTask(&shell,(RecvUartData->buffer)[rcv_cnts]);
+             rcv_cnts ++; //将索引增加一个字节
+          }
+       }       
 	 }  
-    osDelay(1);
+    //osDelay(1);
   }
   /* USER CODE END uart_rx_entry */
 }

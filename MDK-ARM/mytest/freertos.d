@@ -44,3 +44,6 @@ mytest\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 mytest\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 mytest\freertos.o: ../private/dmaRingBuffer.h
 mytest\freertos.o: ../private/rePrintf.h
+mytest\freertos.o: ..\letter-shell-master\demo\stm32-freertos\shell_port.h
+mytest\freertos.o: ..\letter-shell-master\src\shell.h
+mytest\freertos.o: ..\letter-shell-master\src\shell_cfg.h

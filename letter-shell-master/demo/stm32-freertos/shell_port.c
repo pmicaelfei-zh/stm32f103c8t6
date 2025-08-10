@@ -12,17 +12,17 @@
 #include "FreeRTOS.h"
 #include "task.h"
 #include "shell.h"
-#include "serial.h"
-#include "stm32f4xx_hal.h"
+//#include "serial.h"
+#include "stm32f1xx_hal.h"
 #include "usart.h"
-#include "cevent.h"
-#include "log.h"
+//#include "cevent.h"
+//#include "log.h"
 
 
 Shell shell;
 char shellBuffer[512];
 
-static SemaphoreHandle_t shellMutex;
+//static SemaphoreHandle_t shellMutex;
 
 /**
  * @brief 用户shell写
@@ -32,9 +32,10 @@ static SemaphoreHandle_t shellMutex;
  * 
  * @return short 实际写入的数据长度
  */
-short userShellWrite(char *data, unsigned short len)
+static short userShellWrite(char *data, unsigned short len)
 {
-    serialTransmit(&debugSerial, (uint8_t *)data, len, 0x1FF);
+    //serialTransmit(&debugSerial, (uint8_t *)data, len, 0x1FF);
+    HAL_UART_Transmit(&huart1,(unsigned char*)data,len,1000);
     return len;
 }
 
@@ -47,9 +48,9 @@ short userShellWrite(char *data, unsigned short len)
  * 
  * @return short 实际读取到
  */
-short userShellRead(char *data, unsigned short len)
+static short userShellRead(char *data, unsigned short len)
 {
-    return serialReceive(&debugSerial, (uint8_t *)data, len, 0);
+    return 0;//serialReceive(&debugSerial, (uint8_t *)data, len, 0);
 }
 
 /**
@@ -59,9 +60,9 @@ short userShellRead(char *data, unsigned short len)
  * 
  * @return int 0
  */
-int userShellLock(Shell *shell)
+static int userShellLock(Shell *shell)
 {
-    xSemaphoreTakeRecursive(shellMutex, portMAX_DELAY);
+    //xSemaphoreTakeRecursive(shellMutex, portMAX_DELAY);
     return 0;
 }
 
@@ -72,9 +73,9 @@ int userShellLock(Shell *shell)
  * 
  * @return int 0
  */
-int userShellUnlock(Shell *shell)
+static int userShellUnlock(Shell *shell)
 {
-    xSemaphoreGiveRecursive(shellMutex);
+    //xSemaphoreGiveRecursive(shellMutex);
     return 0;
 }
 
@@ -84,17 +85,19 @@ int userShellUnlock(Shell *shell)
  */
 void userShellInit(void)
 {
-    shellMutex = xSemaphoreCreateMutex();
+    //shellMutex = xSemaphoreCreateMutex();
 
-    shell.write = userShellWrite;
-    shell.read = userShellRead;
-    shell.lock = userShellLock;
+    shell.write =  userShellWrite;
+    shell.read  =  0;//userShellRead;
+   #if SHELL_USING_LOCK == 1
+    shell.lock  =  userShellLock;
     shell.unlock = userShellUnlock;
+   #endif
     shellInit(&shell, shellBuffer, 512);
-    if (xTaskCreate(shellTask, "shell", 256, &shell, 5, NULL) != pdPASS)
-    {
-        logError("shell task creat failed");
-    }
+//    if (xTaskCreate(shellTask, "shell", 256, &shell, 5, NULL) != pdPASS)
+//    {
+//        logError("shell task creat failed");
+//    }
 }
-CEVENT_EXPORT(EVENT_INIT_STAGE2, userShellInit);
+
 

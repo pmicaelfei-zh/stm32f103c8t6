@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB,STM32_THREAD_SAFE_STRATEGY=4</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../private</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/STM32F1xx_HAL_Driver/Inc;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../private;..\letter-shell-master\src;..\letter-shell-master\demo\stm32-freertos</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -592,6 +592,36 @@
               <FileName>dmaRingBuffer.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\private\dmaRingBuffer.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>lettershell</GroupName>
+          <Files>
+            <File>
+              <FileName>shell.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\letter-shell-master\src\shell.c</FilePath>
+            </File>
+            <File>
+              <FileName>shell_cmd_list.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\letter-shell-master\src\shell_cmd_list.c</FilePath>
+            </File>
+            <File>
+              <FileName>shell_companion.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\letter-shell-master\src\shell_companion.c</FilePath>
+            </File>
+            <File>
+              <FileName>shell_ext.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\letter-shell-master\src\shell_ext.c</FilePath>
+            </File>
+            <File>
+              <FileName>shell_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\letter-shell-master\demo\stm32-freertos\shell_port.c</FilePath>
             </File>
           </Files>
         </Group>

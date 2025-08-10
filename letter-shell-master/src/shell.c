@@ -1877,15 +1877,15 @@ void shellWriteEndLine(Shell *shell, char *buffer, int len)
  * @param param 参数(shell对象)
  * 
  */
-void shellTask(void *param)
+void shellTask(void *param,char data)
 {
     Shell *shell = (Shell *)param;
-    char data;
+    //char data;
 #if SHELL_TASK_WHILE == 1
-    while(1)
+    //while(1)
     {
 #endif
-        if (shell->read && shell->read(&data, 1) == 1)
+        //if (shell->read && shell->read(&data, 1) == 1)
         {
             shellHandler(shell, data);
         }

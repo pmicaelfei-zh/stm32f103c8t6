@@ -36,6 +36,11 @@
 "mytest\port.o"
 "mytest\reprintf.o"
 "mytest\dmaringbuffer.o"
+"mytest\shell.o"
+"mytest\shell_cmd_list.o"
+"mytest\shell_companion.o"
+"mytest\shell_ext.o"
+"mytest\shell_port.o"
 --strict --scatter "mytest\mytest.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
