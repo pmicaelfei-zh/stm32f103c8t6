@@ -1,0 +1,12 @@
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+mytest\list.o: D:\program\keilarm\ARM\ARMCC\Bin\..\include\stdlib.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+mytest\list.o: D:\program\keilarm\ARM\ARMCC\Bin\..\include\stddef.h
+mytest\list.o: D:\program\keilarm\ARM\ARMCC\Bin\..\include\stdint.h
+mytest\list.o: ../Core/Inc/FreeRTOSConfig.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+mytest\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

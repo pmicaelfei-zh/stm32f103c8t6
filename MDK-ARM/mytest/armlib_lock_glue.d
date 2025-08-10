@@ -1,0 +1,15 @@
+mytest\armlib_lock_glue.o: armlib_lock_glue.c
+mytest\armlib_lock_glue.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+mytest\armlib_lock_glue.o: D:\program\keilarm\ARM\ARMCC\Bin\..\include\stdint.h
+mytest\armlib_lock_glue.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+mytest\armlib_lock_glue.o: stm32_lock.h
+mytest\armlib_lock_glue.o: D:\program\keilarm\ARM\ARMCC\Bin\..\include\stddef.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+mytest\armlib_lock_glue.o: ../Core/Inc/FreeRTOSConfig.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+mytest\armlib_lock_glue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
